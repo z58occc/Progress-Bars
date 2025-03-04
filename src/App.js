@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Accordion from "./Accordion";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="wrapper">
+        <Accordion
+          sections={[
+            {
+              value: "html",
+              title: "HTML",
+              contents:
+                "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.",
+            },
+            {
+              value: "css",
+              title: "CSS",
+              contents:
+                "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.",
+            },
+            {
+              value: "javascript",
+              title: "JavaScript",
+              contents:
+                "JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
+            },
+          ]}
+        />
+      </div>
     </div>
   );
 }
