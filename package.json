@@ -2,7 +2,7 @@
   "name": "q5",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://z58occc.github.io/Accordion",
+  "homepage": "https://z58occc.github.io/Progress-Bars",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",

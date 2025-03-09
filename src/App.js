@@ -1,19 +1,25 @@
+import './App.css'
 import { useEffect, useState } from "react";
 
 function ProgressBar() {
   const [startTransition, setStartTransition] = useState(false);
+
+  // Start transition after first render and never
+  // apply this effect ever again.
   useEffect(() => {
     if (startTransition) {
       return;
     }
+
     setStartTransition(true);
   },[]);
+
   return (
     <div className="bar">
       <div
-        className={`bar-contents ${
-          startTransition ? "bar-contents--filled" : ""
-        }`}
+        className={["bar-contents", startTransition && "bar-contents--filled"]
+          .filter(Boolean)
+          .join(" ")}
       />
     </div>
   );
