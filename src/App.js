@@ -1,35 +1,45 @@
-import "./App.css";
-import Accordion from "./Accordion";
+import { useEffect, useState } from "react";
 
-function App() {
+function ProgressBar() {
+  const [startTransition, setStartTransition] = useState(false);
+  useEffect(() => {
+    if (startTransition) {
+      return;
+    }
+    setStartTransition(true);
+  },[]);
   return (
-    <div className="App">
-      <div className="wrapper">
-        <Accordion
-          sections={[
-            {
-              value: "html",
-              title: "HTML",
-              contents:
-                "The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser.",
-            },
-            {
-              value: "css",
-              title: "CSS",
-              contents:
-                "Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML.",
-            },
-            {
-              value: "javascript",
-              title: "JavaScript",
-              contents:
-                "JavaScript, often abbreviated as JS, is a programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.",
-            },
-          ]}
-        />
-      </div>
+    <div className="bar">
+      <div
+        className={`bar-contents ${
+          startTransition ? "bar-contents--filled" : ""
+        }`}
+      />
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  const [bars, setBars] = useState(0);
+
+  return (
+    <div className="wrapper">
+      <div>
+        <button
+          onClick={() => {
+            setBars(bars + 1);
+          }}
+        >
+          Add
+        </button>
+      </div>
+      <div className="bars">
+        {Array(bars)
+          .fill(null)
+          .map((_, index) => (
+            <ProgressBar key={index} />
+          ))}
+      </div>
+    </div>
+  );
+}
